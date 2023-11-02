@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40FBE692ACB24390035C9D1 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40FBE682ACB24390035C9D1 /* Meme.swift */; };
 		C4B549202AC4413F00644D84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5491F2AC4413F00644D84 /* AppDelegate.swift */; };
 		C4B549222AC4413F00644D84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B549212AC4413F00644D84 /* SceneDelegate.swift */; };
 		C4B549242AC4413F00644D84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B549232AC4413F00644D84 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C40FBE682ACB24390035C9D1 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		C4B5491C2AC4413F00644D84 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B5491F2AC4413F00644D84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4B549212AC4413F00644D84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				C4B549282AC4414300644D84 /* Assets.xcassets */,
 				C4B5492A2AC4414300644D84 /* LaunchScreen.storyboard */,
 				C4B5492D2AC4414300644D84 /* Info.plist */,
+				C40FBE682ACB24390035C9D1 /* Meme.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4B549242AC4413F00644D84 /* ViewController.swift in Sources */,
+				C40FBE692ACB24390035C9D1 /* Meme.swift in Sources */,
 				C4B549202AC4413F00644D84 /* AppDelegate.swift in Sources */,
 				C4B549222AC4413F00644D84 /* SceneDelegate.swift in Sources */,
 			);
@@ -295,11 +299,14 @@
 				DEVELOPMENT_TEAM = Z43B879WV6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemeMe/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = Testing;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Testing;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,11 +330,14 @@
 				DEVELOPMENT_TEAM = Z43B879WV6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemeMe/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = Testing;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Testing;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
