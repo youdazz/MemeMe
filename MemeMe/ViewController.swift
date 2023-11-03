@@ -31,7 +31,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        #if targetEnvironment(simulator)
+        cameraButton.isEnabled = false
+        #else
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        #endif
         subscribeToKeyboardNotifications()
     }
     
@@ -72,13 +76,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func initTextFields() {
+        initTextField(textField: topTextField)
+        initTextField(textField: bottomTextField)
+    }
+    
+    func initTextField(textField: UITextField) {
         let memeTextAttributes = getMemeTextAttributes()
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
-        topTextField.delegate = self
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.textAlignment = .center
-        bottomTextField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.delegate = self
     }
     
     func getMemeTextAttributes() -> [NSAttributedString.Key: Any] {
@@ -101,8 +107,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         hideToolBarAndNavBar()
             
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
             
@@ -162,26 +168,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         dismiss(animated: true)
     }
+    
+    func pickImage(source: UIImagePickerController.SourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = source
+        self.present(pickerController, animated: true)
+    }
 
     //MARK: IBActions
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         view.endEditing(true)
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        self.present(pickerController, animated: true)
+        pickImage(source: .photoLibrary)
     }
 
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         view.endEditing(true)
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .camera
-        self.present(pickerController, animated: true)
+        pickImage(source: .camera)
     }
     
     @IBAction func shareMeme(_ sender: Any) {
+        view.endEditing(true)
         let uiimage = generateMemedImage()
         let items = [uiimage]
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
