@@ -21,12 +21,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     var shouldClearTopTextField = true
     var shouldClearBottomTextField = true
     var memedImage: UIImage!
+    var meme: Meme?
     
     //MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initTextFields()
         shareButton.isEnabled = false
+        if meme != nil {
+            loadMeme()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +76,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // MARK: Functions
-    func initNavigationBar() {
+    func loadMeme() {
+        guard let meme = meme else { return }
+        imageView.image = meme.originalImage
+        topTextField.text = meme.topText
+        bottomTextField.text = meme.bottomText
+        shareButton.isEnabled = true
     }
     
     func initTextFields() {
@@ -98,8 +107,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func save() {
         // Create the meme
-        let _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
 
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        dismiss(animated: true)
     }
     
     func generateMemedImage() -> UIImage {
@@ -199,6 +212,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             self.save()
         }
         self.present(activityViewController, animated: true)
+    }
+    
+    @IBAction func didTapCancel(_ sender: Any) {
+        self.dismiss(animated: true)
     }
 }
 
